@@ -1,10 +1,31 @@
 import { Button } from "@/components/ui/button";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Terminal } from "lucide-react";
+import { useState } from "react";
+export function AlertDemo() {
+  return (
+    <Alert>
+      <Terminal className="h-4 w-4" />
+      <AlertTitle>Heads up!</AlertTitle>
+      <AlertDescription>
+        You can add components to your app using the cli.
+      </AlertDescription>
+    </Alert>
+  );
+}
 
 function App() {
+  const [visible, setVisible] = useState(true);
   return (
-    <>
-      <Button>Button</Button>
-    </>
+    <div className="mt-3 ml-3 space-y-3">
+      <Button
+        variant={visible ? "destructive" : "default"}
+        onClick={() => setVisible((x) => !x)}
+      >
+        {visible ? "hide" : "show"} alert
+      </Button>
+      {visible && <AlertDemo />}
+    </div>
   );
 }
 
