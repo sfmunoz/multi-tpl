@@ -1,50 +1,41 @@
-# React + TypeScript + Vite
+# Mantine
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## References
 
-Currently, two official plugins are available:
+- https://mantine.dev/getting-started/
+- https://mantine.dev/guides/vite/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Steps
 
-## Expanding the ESLint configuration
+- `pnpm create vite@latest -t react-swc-ts`
+- `pnpm install`
+- `pnpm install @mantine/core @mantine/hooks`
+- `pnpm install --save-dev postcss postcss-preset-mantine postcss-simple-vars`
+- **postcss.config.cjs** creation/configuration
+- **src/main.tsx**: enable **MantineProvider**
+- **src/App.tsx** shows an unstyled tab list
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## VScode tuning (TODO)
 
-- Configure the top-level `parserOptions` property like this:
+Copied from [https://mantine.dev/getting-started/](https://mantine.dev/getting-started/):
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+(...)
+
+**Set up VS Code**
+
+By default, VS Code does not recognize postcss syntax, you need to install [PostCSS Intellisense and Highlighting](https://marketplace.visualstudio.com/items?itemName=vunguyentuan.vscode-postcss) to enable syntax highlighting and suppress variables ($variable) errors.
+
+To get CSS variables autocomplete, install [CSS Variable Autocomplete extension](https://marketplace.visualstudio.com/items?itemName=vunguyentuan.vscode-css-variables). Then create .vscode/settings.json file in the root folder of your project with the following content:
+
 ```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+{
+  "cssVariables.lookupFiles": [
+    "**/*.css",
+    "**/*.scss",
+    "**/*.sass",
+    "**/*.less",
+    "node_modules/@mantine/core/styles.css"
+  ]
+}
 ```
+(...)
