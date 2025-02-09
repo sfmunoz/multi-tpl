@@ -2,10 +2,16 @@
 
 ## References
 
-- https://mantine.dev/getting-started/
-- https://mantine.dev/guides/vite/
+- Core:
+  - https://mantine.dev/getting-started/
+  - https://mantine.dev/guides/vite/
+- UI:
+  - https://ui.mantine.dev/
+  - https://tabler.io/docs/icons/libraries/react
 
 ## Steps
+
+Core:
 
 - `pnpm create vite@latest -t react-swc-ts`
 - `pnpm install`
@@ -14,6 +20,11 @@
 - **postcss.config.cjs** creation/configuration
 - **src/main.tsx**: enable **MantineProvider**
 - **src/App.tsx** shows an unstyled tab list
+
+UI:
+
+- `pnpm install @tabler/icons-react`
+- **src/App.tsx** shows a button-menu
 
 ## VScode tuning (TODO)
 
@@ -38,4 +49,5 @@ To get CSS variables autocomplete, install [CSS Variable Autocomplete extension]
   ]
 }
 ```
+
 (...)
