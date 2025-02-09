@@ -1,8 +1,11 @@
+import { Flex, Text, Button } from "@radix-ui/themes";
+
 function App() {
   return (
-    <div>
-      <h2>Simple empty page</h2>
-    </div>
+    <Flex direction="column" gap="2">
+      <Text>Hello world</Text>
+      <Button>Click me</Button>
+    </Flex>
   );
 }
 
