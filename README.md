@@ -14,4 +14,4 @@ https://chakra-ui.com/docs/get-started/frameworks/vite
 - **src/main.tsx** Provider configured
 - `pnpm i -D vite-tsconfig-paths`
 - **vite.config.ts** adapted to use **vite-tsconfig-paths**
-- **src/App.tsx** show a couple of buttons
+- **src/App.tsx** show a couple of buttons and a popover
