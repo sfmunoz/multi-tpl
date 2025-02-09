@@ -1,9 +1,15 @@
-function App() {
-  return (
-    <div>
-      <h2>Simple empty page</h2>
-    </div>
-  );
-}
+import { Popover } from "radix-ui";
+
+const App = () => (
+  <Popover.Root>
+    <Popover.Trigger>More info</Popover.Trigger>
+    <Popover.Portal>
+      <Popover.Content>
+        Some more info…
+        <Popover.Arrow />
+      </Popover.Content>
+    </Popover.Portal>
+  </Popover.Root>
+);
 
 export default App;
