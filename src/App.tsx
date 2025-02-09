@@ -1,8 +1,11 @@
+import { Button, HStack } from "@chakra-ui/react";
+
 function App() {
   return (
-    <div>
-      <h2>Simple empty page</h2>
-    </div>
+    <HStack>
+      <Button>Click me</Button>
+      <Button>Click me</Button>
+    </HStack>
   );
 }
 
