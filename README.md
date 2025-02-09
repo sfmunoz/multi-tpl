@@ -9,6 +9,8 @@
   - [react-aria-tw3](https://github.com/sfmunoz/multi-tpl/tree/react-aria-tw3): React Aria + TailwindCSS3
   - [react-aria-vanilla](https://github.com/sfmunoz/multi-tpl/tree/react-aria-vanilla): React Aria + Vanilla CSS
 - [react-spectrum](https://github.com/sfmunoz/multi-tpl/tree/react-spectrum): React Spectrum
+- Radix:
+  - [radix-ui-primitives](https://github.com/sfmunoz/multi-tpl/tree/radix-ui-primitives): Radix Primitives
 
 ## Base
 
