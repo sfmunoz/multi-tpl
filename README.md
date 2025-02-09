@@ -19,7 +19,7 @@ Core:
 - `pnpm install --save-dev postcss postcss-preset-mantine postcss-simple-vars`
 - **postcss.config.cjs** creation/configuration
 - **src/main.tsx**: enable **MantineProvider**
-- **src/App.tsx** shows an unstyled tab list
+- **src/App.tsx** shows an unstyled tab list and banner
 
 UI:
 
