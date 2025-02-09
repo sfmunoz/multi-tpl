@@ -1,7 +1,11 @@
+import { Button } from "@adobe/react-spectrum";
+
 function App() {
   return (
     <div>
-      <h2>Simple empty page</h2>
+      <Button variant="accent" onPress={() => alert("Hey there!")}>
+        Hello React Spectrum!
+      </Button>
     </div>
   );
 }
