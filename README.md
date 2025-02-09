@@ -11,6 +11,7 @@
 - [react-spectrum](https://github.com/sfmunoz/multi-tpl/tree/react-spectrum): React Spectrum
 - Radix:
   - [radix-ui-primitives](https://github.com/sfmunoz/multi-tpl/tree/radix-ui-primitives): Radix Primitives
+  - [radix-themes](https://github.com/sfmunoz/multi-tpl/tree/radix-themes): Radix Themes
 
 ## Base
 
