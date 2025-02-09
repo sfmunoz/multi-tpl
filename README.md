@@ -10,7 +10,7 @@
   - [react-aria-vanilla](https://github.com/sfmunoz/multi-tpl/tree/react-aria-vanilla): React Aria + Vanilla CSS
 - [react-spectrum](https://github.com/sfmunoz/multi-tpl/tree/react-spectrum): React Spectrum
 - Radix:
-  - [radix-ui-primitives](https://github.com/sfmunoz/multi-tpl/tree/radix-ui-primitives): Radix Primitives
+  - [radix-primitives](https://github.com/sfmunoz/multi-tpl/tree/radix-primitives): Radix Primitives
   - [radix-themes](https://github.com/sfmunoz/multi-tpl/tree/radix-themes): Radix Themes
 
 ## Base
