@@ -9,3 +9,4 @@
   - [react-aria-scratch](https://github.com/sfmunoz/multi-tpl/tree/react-aria-scratch): React Aria (from scratch)
   - [react-aria-tw3](https://github.com/sfmunoz/multi-tpl/tree/react-aria-tw3): React Aria + TailwindCSS3
   - [react-aria-vanilla](https://github.com/sfmunoz/multi-tpl/tree/react-aria-vanilla): React Aria + Vanilla CSS
+- [react-spectrum](https://github.com/sfmunoz/multi-tpl/tree/react-spectrum): React Spectrum
