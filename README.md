@@ -16,6 +16,7 @@
 - [mantine](https://github.com/sfmunoz/multi-tpl/tree/mantine): Mantine
 - [chakra](https://github.com/sfmunoz/multi-tpl/tree/chakra): Chakra
 - [master-css](https://github.com/sfmunoz/multi-tpl/tree/master-css): MasterCSS
+- [bootstrap](https://github.com/sfmunoz/multi-tpl/tree/bootstrap): Bootstrap
 
 ## Base
 
