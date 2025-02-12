@@ -1,5 +1,7 @@
 # Multi Template
 
+## UI
+
 - shadcn/ui
   - [sui-tw4-tpl](https://github.com/sfmunoz/multi-tpl/tree/sui-tw4-tpl): shadcn/ui + TailwindCSS 4
   - [sui-tw3-tpl](https://github.com/sfmunoz/multi-tpl/tree/sui-tw3-tpl): shadcn/ui + TailwindCSS 3
@@ -17,6 +19,10 @@
 - [chakra](https://github.com/sfmunoz/multi-tpl/tree/chakra): Chakra
 - [master-css](https://github.com/sfmunoz/multi-tpl/tree/master-css): MasterCSS
 - [bootstrap](https://github.com/sfmunoz/multi-tpl/tree/bootstrap): Bootstrap
+
+## NextJS
+
+- [nextjs-dashboard](https://github.com/sfmunoz/multi-tpl/tree/nextjs-dashboard): NextJS Dashboard
 
 ## Base
 
