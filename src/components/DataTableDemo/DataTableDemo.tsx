@@ -30,9 +30,10 @@ import {
 import { payments } from "./payments";
 import { columns } from "./columns";
 import { Payment } from "./Payment";
+import PrevNext from "./PrevNext";
 
 const DataTableDemo = () => {
-  const data = React.useMemo<Payment[]>(() => payments(50), []);
+  const data = React.useMemo<Payment[]>(() => payments(27), []);
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -151,24 +152,7 @@ const DataTableDemo = () => {
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
           {table.getFilteredRowModel().rows.length} row(s) selected.
         </div>
-        <div className="space-x-2">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            Previous
-          </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            Next
-          </Button>
-        </div>
+        <PrevNext table={table} />
       </div>
     </div>
   );
