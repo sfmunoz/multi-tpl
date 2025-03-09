@@ -10,14 +10,6 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { ChevronDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import {
   Table,
   TableBody,
@@ -31,6 +23,7 @@ import { columns } from "./columns";
 import { Payment } from "./Payment";
 import PrevNext from "./PrevNext";
 import Filter from "./Filter";
+import Selector from "./Selector";
 
 const DataTableDemo = () => {
   const data = React.useMemo<Payment[]>(() => payments(27), []);
@@ -63,32 +56,7 @@ const DataTableDemo = () => {
     <div className="w-full">
       <div className="flex items-center py-4">
         <Filter table={table} />
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="ml-auto">
-              Columns <ChevronDown />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            {table
-              .getAllColumns()
-              .filter((column) => column.getCanHide())
-              .map((column) => {
-                return (
-                  <DropdownMenuCheckboxItem
-                    key={column.id}
-                    className="capitalize"
-                    checked={column.getIsVisible()}
-                    onCheckedChange={(value) =>
-                      column.toggleVisibility(!!value)
-                    }
-                  >
-                    {column.id}
-                  </DropdownMenuCheckboxItem>
-                );
-              })}
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <Selector table={table} />
       </div>
       <div className="rounded-md border">
         <Table>
