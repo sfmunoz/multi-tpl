@@ -41,3 +41,4 @@
 - `pnpm dlx shadcn@canary add checkbox`
 - `pnpm dlx shadcn@canary add dropdown-menu`
 - `pnpm dlx shadcn@canary add input`
+- DataTableDemo component created (first example from https://ui.shadcn.com/docs/components/data-table)

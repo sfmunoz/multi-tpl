@@ -2,7 +2,9 @@ import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Terminal } from "lucide-react";
 import { useState } from "react";
-export function AlertDemo() {
+import DataTableDemo from "./components/DataTableDemo";
+
+const AlertDemo = () => {
   return (
     <Alert>
       <Terminal className="h-4 w-4" />
@@ -12,12 +14,13 @@ export function AlertDemo() {
       </AlertDescription>
     </Alert>
   );
-}
+};
 
 function App() {
   const [visible, setVisible] = useState(true);
   return (
     <div className="mt-3 ml-3 space-y-3">
+      <DataTableDemo />
       <Button
         variant={visible ? "destructive" : "default"}
         onClick={() => setVisible((x) => !x)}
