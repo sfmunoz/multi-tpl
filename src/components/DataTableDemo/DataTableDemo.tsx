@@ -18,7 +18,6 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -31,6 +30,7 @@ import { payments } from "./payments";
 import { columns } from "./columns";
 import { Payment } from "./Payment";
 import PrevNext from "./PrevNext";
+import Filter from "./Filter";
 
 const DataTableDemo = () => {
   const data = React.useMemo<Payment[]>(() => payments(27), []);
@@ -62,14 +62,7 @@ const DataTableDemo = () => {
   return (
     <div className="w-full">
       <div className="flex items-center py-4">
-        <Input
-          placeholder="Filter emails..."
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
-          onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm"
-        />
+        <Filter table={table} />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">
