@@ -10,6 +10,7 @@
 
 ### data-table
 
+- https://tanstack.com/table/latest
 - https://ui.shadcn.com/docs/components/data-table
 - https://ui.shadcn.com/docs/components/table
 
@@ -43,3 +44,4 @@
 - `pnpm dlx shadcn@canary add input`
 - DataTableDemo component created (first example from https://ui.shadcn.com/docs/components/data-table)
 - DataTableDemo.tsx spread in multiple files
+- Random data generation
