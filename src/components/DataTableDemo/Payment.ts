@@ -1,7 +1,9 @@
+import { PaymentStatus } from "./PaymentStatus";
+
 type Payment = {
   id: string;
   amount: number;
-  status: "pending" | "processing" | "success" | "failed";
+  status: PaymentStatus;
   email: string;
 };
 

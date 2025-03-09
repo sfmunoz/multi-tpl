@@ -29,8 +29,10 @@ import {
 } from "@/components/ui/table";
 import { payments } from "./payments";
 import { columns } from "./columns";
+import { Payment } from "./Payment";
 
 const DataTableDemo = () => {
+  const data = React.useMemo<Payment[]>(() => payments(50), []);
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -39,7 +41,7 @@ const DataTableDemo = () => {
     React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
   const table = useReactTable({
-    data: payments,
+    data,
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
