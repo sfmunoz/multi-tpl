@@ -39,3 +39,4 @@
 - `pnpm dlx shadcn@canary add table`
 - `pnpm install @tanstack/react-table`
 - `pnpm dlx shadcn@canary add checkbox`
+- `pnpm dlx shadcn@canary add dropdown-menu`
