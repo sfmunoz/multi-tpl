@@ -1,5 +1,5 @@
 import { Input } from "@/components/ui/input";
-import { Payment } from "./Payment";
+import { Payment } from "../Payment";
 import { Table } from "@tanstack/react-table";
 
 interface FilterProps {
@@ -14,7 +14,7 @@ const Filter = ({ table }: FilterProps) => {
       onChange={(event) =>
         table.getColumn("email")?.setFilterValue(event.target.value)
       }
-      className="max-w-sm"
+      className="w-80"
     />
   );
 };

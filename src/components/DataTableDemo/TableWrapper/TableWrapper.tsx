@@ -13,15 +13,17 @@ interface TableWrapperProps {
 
 const TableWrapper = ({ table, children }: TableWrapperProps) => {
   return (
-    <div className="w-full">
-      <div className="flex items-center py-4">
-        <Filter table={table} />
-        <Selector table={table} />
-      </div>
-      <div className="rounded-md border">{children}</div>
-      <div className="flex items-center justify-end space-x-2 py-4">
-        <Recap table={table} />
-        <PrevNext table={table} />
+    <div className="flex flex-row justify-center items-center">
+      <div className="flex flex-col justify-center items-center p-4 gap-4">
+        <div className="flex flex-row justify-between items-center w-200">
+          <Recap table={table} />
+          <Filter table={table} />
+        </div>
+        <div className="flex flex-row justify-between items-center w-200">
+          <PrevNext table={table} />
+          <Selector table={table} />
+        </div>
+        <div className="rounded-md border w-200">{children}</div>
       </div>
     </div>
   );

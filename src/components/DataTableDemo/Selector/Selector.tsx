@@ -6,7 +6,7 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Payment } from "./Payment";
+import { Payment } from "../Payment";
 import { Table } from "@tanstack/react-table";
 
 interface SelectorProps {
