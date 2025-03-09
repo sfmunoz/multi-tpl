@@ -1,12 +1,21 @@
-# shadcn/ui + TailwindCSS4 template
+# data-table
 
 ## References
+
+### shadcn/ui + tw4
 
 - https://github.com/shadcn-ui/ui/issues/6585
 - https://ui.shadcn.com/docs/installation/vite
 - https://medium.com/@vitor.vicen.te/setting-up-path-aliases-in-a-vite-typescript-react-project-the-ultimate-way-d2a9a8ff7c63
 
+### data-table
+
+- https://ui.shadcn.com/docs/components/data-table
+- https://ui.shadcn.com/docs/components/table
+
 ## Steps
+
+### shadcn/ui + tw4
 
 - `pnpm create vite@latest -t react-swc-ts`
 - `pnpm install`
@@ -24,3 +33,8 @@
 - **src/App.tsx** adaption to use the button
 - `pnpm dlx shadcn@canary add alert`
 - **src/App.tsx** adaption to use the alert
+
+### data-table
+
+- `pnpm dlx shadcn@canary add table`
+- `pnpm install @tanstack/react-table`
