@@ -1,10 +1,10 @@
 import * as React from "react";
 import { Table } from "@tanstack/react-table";
-import { Payment } from "./Payment";
-import PrevNext from "./PrevNext";
-import Filter from "./Filter";
-import Selector from "./Selector";
-import Recap from "./Recap";
+import { Payment } from "../Payment";
+import PrevNext from "../PrevNext";
+import Filter from "../Filter";
+import Selector from "../Selector";
+import Recap from "../Recap";
 
 interface TableWrapperProps {
   table: Table<Payment>;
