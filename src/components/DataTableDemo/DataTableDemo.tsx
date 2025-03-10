@@ -22,10 +22,16 @@ import { payments } from "./payments";
 import { columns } from "./columns";
 import { Payment } from "./Payment";
 import TableWrapper from "./TableWrapper";
+import { Bug } from "lucide-react";
 
 const DataTableDemo = () => {
   const data = React.useMemo<Payment[]>(() => payments(27), []);
-  const [sorting, setSorting] = React.useState<SortingState>([]);
+  const [sortingOld, setSortingOld] = React.useState<SortingState | undefined>(
+    undefined
+  );
+  const [sorting, setSorting] = React.useState<SortingState>([
+    { id: "email", desc: false },
+  ]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   );
@@ -45,62 +51,74 @@ const DataTableDemo = () => {
       columnVisibility,
       rowSelection,
     },
-    onSortingChange: setSorting,
+    onSortingChange: (updater) => {
+      const newSorting =
+        updater instanceof Function ? updater(sorting) : updater;
+      setSortingOld(sorting);
+      setSorting(newSorting);
+    },
     onColumnFiltersChange: setColumnFilters,
     onColumnVisibilityChange: setColumnVisibility,
     onRowSelectionChange: setRowSelection,
-    // state: tableState,
-    // onStateChange: (updater) => {
-    //   setTableState((prev) =>
-    //     typeof updater === "function" ? updater(prev) : updater
-    //   );
-    // },
   });
   return (
-    <TableWrapper table={table}>
-      <Table>
-        <TableHeader>
-          {table.getHeaderGroups().map((headerGroup) => (
-            <TableRow key={headerGroup.id}>
-              {headerGroup.headers.map((header) => {
-                return (
-                  <TableHead key={header.id}>
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
-                  </TableHead>
-                );
-              })}
-            </TableRow>
-          ))}
-        </TableHeader>
-        <TableBody>
-          {table.getRowModel().rows?.length ? (
-            table.getRowModel().rows.map((row) => (
-              <TableRow
-                key={row.id}
-                data-state={row.getIsSelected() && "selected"}
-              >
-                {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </TableCell>
-                ))}
+    <>
+      <TableWrapper table={table}>
+        <Table>
+          <TableHeader>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <TableRow key={headerGroup.id}>
+                {headerGroup.headers.map((header) => {
+                  return (
+                    <TableHead key={header.id}>
+                      {header.isPlaceholder
+                        ? null
+                        : flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
+                    </TableHead>
+                  );
+                })}
               </TableRow>
-            ))
-          ) : (
-            <TableRow>
-              <TableCell colSpan={columns.length} className="h-24 text-center">
-                No results.
-              </TableCell>
-            </TableRow>
-          )}
-        </TableBody>
-      </Table>
-    </TableWrapper>
+            ))}
+          </TableHeader>
+          <TableBody>
+            {table.getRowModel().rows?.length ? (
+              table.getRowModel().rows.map((row) => (
+                <TableRow
+                  key={row.id}
+                  data-state={row.getIsSelected() && "selected"}
+                >
+                  {row.getVisibleCells().map((cell) => (
+                    <TableCell key={cell.id}>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell
+                  colSpan={columns.length}
+                  className="h-24 text-center"
+                >
+                  No results.
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </TableWrapper>
+      <div className="flex flex-row bg-red-200 whitespace-nowrap w-min mx-auto mt-6 p-2 rounded-md border border-red-400">
+        <Bug /> [sort] {sortingOld ? JSON.stringify(sortingOld) : "[init]"}
+        {" --> "}
+        {JSON.stringify(sorting)}
+      </div>
+    </>
   );
 };
 
