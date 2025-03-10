@@ -49,6 +49,12 @@ const DataTableDemo = () => {
     onColumnFiltersChange: setColumnFilters,
     onColumnVisibilityChange: setColumnVisibility,
     onRowSelectionChange: setRowSelection,
+    // state: tableState,
+    // onStateChange: (updater) => {
+    //   setTableState((prev) =>
+    //     typeof updater === "function" ? updater(prev) : updater
+    //   );
+    // },
   });
   return (
     <TableWrapper table={table}>
