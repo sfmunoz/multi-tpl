@@ -25,7 +25,7 @@ import TableWrapper from "./TableWrapper";
 import { Bug } from "lucide-react";
 
 const DataTableDemo = () => {
-  const data = React.useMemo<Payment[]>(() => payments(27), []);
+  const [data, setData] = React.useState<Payment[]>(payments(27));
   const [sortingOld, setSortingOld] = React.useState<SortingState | undefined>(
     undefined
   );
@@ -40,7 +40,9 @@ const DataTableDemo = () => {
   const [rowSelection, setRowSelection] = React.useState({});
   const table = useReactTable({
     data,
-    columns,
+    columns: columns((email: string) =>
+      setData((prev) => prev.filter((item) => item.email !== email))
+    ),
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),

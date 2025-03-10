@@ -3,7 +3,14 @@ import {
   createColumnHelper,
   HeaderContext,
 } from "@tanstack/react-table";
-import { ArrowDown, ArrowUp, ArrowUpDown, MoreHorizontal } from "lucide-react";
+import {
+  ArrowDown,
+  ArrowUp,
+  ArrowUpDown,
+  CircleX,
+  MoreHorizontal,
+  X,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -40,7 +47,7 @@ const SortHeader = ({ title, column }: SortHeaderProps) => {
 
 const colHelp = createColumnHelper<Payment>();
 
-const columns: ColumnDef<Payment>[] = [
+const columns = (rowDelete: (email: string) => void): ColumnDef<Payment>[] => [
   {
     id: "select",
     header: ({ table }) => (
@@ -60,6 +67,22 @@ const columns: ColumnDef<Payment>[] = [
         aria-label="Select row"
       />
     ),
+    enableSorting: false,
+    enableHiding: false,
+  },
+  {
+    id: "delete",
+    header: () => <X className="size-6" />,
+    cell: ({ row }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => rowDelete(row.getValue("email"))}
+        >
+          <CircleX className="stroke-red-600" />
+        </Button>
+      );
+    },
     enableSorting: false,
     enableHiding: false,
   },
