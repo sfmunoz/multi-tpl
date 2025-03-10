@@ -5,7 +5,7 @@ const status: PaymentStatus[] = ["pending", "processing", "success", "failed"];
 const statusLen = status.length;
 
 const payment = (k: number): Payment => {
-  const id = (k + 1).toString();
+  const id = (k + 101).toString();
   return {
     id: id,
     amount: 100 + 900 * Math.random(),

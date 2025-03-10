@@ -49,6 +49,16 @@ const colHelp = createColumnHelper<Payment>();
 
 const columns = (rowDelete: (email: string) => void): ColumnDef<Payment>[] => [
   {
+    accessorKey: "rowId",
+    header: () => <div>RowId</div>,
+    cell: ({ row }) => <div>{row.id}</div>,
+  },
+  {
+    accessorKey: "id",
+    header: () => <div>MyId</div>,
+    cell: ({ row }) => <div>{row.getValue("id")}</div>,
+  },
+  {
     id: "select",
     header: ({ table }) => (
       <Checkbox

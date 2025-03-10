@@ -28,7 +28,7 @@ import { Bug } from "lucide-react";
 const DataTableDemo = () => {
   const [data, setData] = React.useState<Payment[]>(payments(27));
   const [pagination, setPagination] = React.useState<PaginationState>({
-    pageIndex: 1,
+    pageIndex: 0,
     pageSize: 8,
   });
   const [sortingOld, setSortingOld] = React.useState<SortingState | undefined>(
