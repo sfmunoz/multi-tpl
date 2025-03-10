@@ -1,5 +1,9 @@
-import { ColumnDef, createColumnHelper } from "@tanstack/react-table";
-import { ArrowUpDown, MoreHorizontal } from "lucide-react";
+import {
+  ColumnDef,
+  createColumnHelper,
+  HeaderContext,
+} from "@tanstack/react-table";
+import { ArrowDown, ArrowUp, ArrowUpDown, MoreHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -11,6 +15,28 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Payment } from "./Payment";
+
+interface SortHeaderProps {
+  title: string;
+  column: HeaderContext<Payment, unknown>["column"];
+}
+
+// eslint-disable-next-line react-refresh/only-export-components
+const SortHeader = ({ title, column }: SortHeaderProps) => {
+  const s = column.getIsSorted();
+  return (
+    <Button variant="ghost" onClick={() => column.toggleSorting(s === "asc")}>
+      {title}
+      {s === "asc" ? (
+        <ArrowDown />
+      ) : s === "desc" ? (
+        <ArrowUp />
+      ) : (
+        <ArrowUpDown />
+      )}
+    </Button>
+  );
+};
 
 const colHelp = createColumnHelper<Payment>();
 
@@ -45,22 +71,12 @@ const columns: ColumnDef<Payment>[] = [
   }) as ColumnDef<Payment>,
   {
     accessorKey: "email",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Email
-          <ArrowUpDown />
-        </Button>
-      );
-    },
+    header: ({ column }) => <SortHeader title="Email" column={column} />,
     cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
   },
   {
     accessorKey: "amount",
-    header: () => <div className="text-right">Amount</div>,
+    header: ({ column }) => <SortHeader title="Amount" column={column} />,
     cell: ({ row }) => {
       const amount = parseFloat(row.getValue("amount"));
       // Format the amount as a dollar amount
