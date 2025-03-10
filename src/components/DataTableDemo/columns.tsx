@@ -1,4 +1,4 @@
-import { ColumnDef } from "@tanstack/react-table";
+import { ColumnDef, createColumnHelper } from "@tanstack/react-table";
 import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -11,6 +11,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Payment } from "./Payment";
+
+const colHelp = createColumnHelper<Payment>();
 
 const columns: ColumnDef<Payment>[] = [
   {
@@ -35,13 +37,12 @@ const columns: ColumnDef<Payment>[] = [
     enableSorting: false,
     enableHiding: false,
   },
-  {
-    accessorKey: "status",
+  colHelp.accessor("status", {
     header: "Status",
     cell: ({ row }) => (
       <div className="capitalize">{row.getValue("status")}</div>
     ),
-  },
+  }) as ColumnDef<Payment>,
   {
     accessorKey: "email",
     header: ({ column }) => {
