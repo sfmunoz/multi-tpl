@@ -1,6 +1,7 @@
 import * as React from "react";
 import {
   ColumnFiltersState,
+  PaginationState,
   SortingState,
   VisibilityState,
   flexRender,
@@ -26,6 +27,10 @@ import { Bug } from "lucide-react";
 
 const DataTableDemo = () => {
   const [data, setData] = React.useState<Payment[]>(payments(27));
+  const [pagination, setPagination] = React.useState<PaginationState>({
+    pageIndex: 1,
+    pageSize: 8,
+  });
   const [sortingOld, setSortingOld] = React.useState<SortingState | undefined>(
     undefined
   );
@@ -52,6 +57,7 @@ const DataTableDemo = () => {
       columnFilters,
       columnVisibility,
       rowSelection,
+      pagination,
     },
     onSortingChange: (updater) => {
       const newSorting =
@@ -62,6 +68,7 @@ const DataTableDemo = () => {
     onColumnFiltersChange: setColumnFilters,
     onColumnVisibilityChange: setColumnVisibility,
     onRowSelectionChange: setRowSelection,
+    onPaginationChange: setPagination,
   });
   return (
     <>
