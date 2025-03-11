@@ -43,8 +43,16 @@ const DataTableDemo = () => {
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
-  const rowDelete = (id: string) =>
-    setData((prev) => prev.filter((item) => item.id !== id));
+  const rowDelete = (id: string) => {
+    const newData = data.filter((item) => item.id !== id);
+    setData(newData);
+    const dlen = newData.length;
+    let pi = pagination.pageIndex;
+    const ps = pagination.pageSize;
+    while (pi > 0 && dlen <= pi * ps) pi--; // general, multi-row deletion supported
+    if (pagination.pageIndex === pi) return;
+    setPagination({ pageIndex: pi, pageSize: ps });
+  };
   const rowChecked = (id: string, checked: boolean) =>
     setData((prev) =>
       prev.map((item) => ({
@@ -59,6 +67,7 @@ const DataTableDemo = () => {
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
+    autoResetPageIndex: false, // pagination: do set 'pageIndex=0' when data changes
     state: {
       sorting,
       columnFilters,
