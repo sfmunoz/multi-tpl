@@ -48,7 +48,7 @@ const SortHeader = ({ title, column }: SortHeaderProps) => {
 const colHelp = createColumnHelper<Payment>();
 
 const columns = (
-  rowDelete: (email: string) => void,
+  rowDelete: (id: string) => void,
   rowChecked: (id: string, checked: boolean) => void
 ): ColumnDef<Payment>[] => [
   {
@@ -93,10 +93,7 @@ const columns = (
     header: () => <X className="size-6" />,
     cell: ({ row }) => {
       return (
-        <Button
-          variant="ghost"
-          onClick={() => rowDelete(row.getValue("email"))}
-        >
+        <Button variant="ghost" onClick={() => rowDelete(row.original.id)}>
           <CircleX className="stroke-red-600" />
         </Button>
       );

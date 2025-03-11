@@ -43,8 +43,8 @@ const DataTableDemo = () => {
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
-  const rowDelete = (email: string) =>
-    setData((prev) => prev.filter((item) => item.email !== email));
+  const rowDelete = (id: string) =>
+    setData((prev) => prev.filter((item) => item.id !== id));
   const rowChecked = (id: string, checked: boolean) =>
     setData((prev) =>
       prev.map((item) => ({
