@@ -5,6 +5,7 @@ type Payment = {
   amount: number;
   status: PaymentStatus;
   email: string;
+  checked: boolean;
 };
 
 export { type Payment };

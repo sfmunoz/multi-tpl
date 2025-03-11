@@ -43,11 +43,18 @@ const DataTableDemo = () => {
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
+  const rowDelete = (email: string) =>
+    setData((prev) => prev.filter((item) => item.email !== email));
+  const rowChecked = (id: string, checked: boolean) =>
+    setData((prev) =>
+      prev.map((item) => ({
+        ...item,
+        checked: item.id === id ? checked : item.checked,
+      }))
+    );
   const table = useReactTable({
     data,
-    columns: columns((email: string) =>
-      setData((prev) => prev.filter((item) => item.email !== email))
-    ),
+    columns: columns(rowDelete, rowChecked),
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),

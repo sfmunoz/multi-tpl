@@ -11,6 +11,7 @@ const payment = (k: number): Payment => {
     amount: 100 + 900 * Math.random(),
     status: status[Math.floor(Math.random() * statusLen)],
     email: `fake-${id}@example.com`,
+    checked: k % 2 == 0,
   };
 };
 

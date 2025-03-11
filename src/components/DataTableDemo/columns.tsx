@@ -47,7 +47,10 @@ const SortHeader = ({ title, column }: SortHeaderProps) => {
 
 const colHelp = createColumnHelper<Payment>();
 
-const columns = (rowDelete: (email: string) => void): ColumnDef<Payment>[] => [
+const columns = (
+  rowDelete: (email: string) => void,
+  rowChecked: (id: string, checked: boolean) => void
+): ColumnDef<Payment>[] => [
   {
     accessorKey: "rowId",
     header: () => <div>RowId</div>,
@@ -60,20 +63,25 @@ const columns = (rowDelete: (email: string) => void): ColumnDef<Payment>[] => [
   },
   {
     id: "select",
-    header: ({ table }) => (
-      <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")
-        }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-      />
-    ),
+    header: ({ table }) => {
+      const model = table.getCoreRowModel();
+      return (
+        <Checkbox
+          checked={model.rows.reduce(
+            (acc, row) => acc || row.original.checked,
+            false
+          )}
+          onCheckedChange={(value) => {
+            model.rows.forEach((row) => rowChecked(row.original.id, !!value));
+          }}
+          aria-label="Select all"
+        />
+      );
+    },
     cell: ({ row }) => (
       <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
+        checked={row.original.checked}
+        onCheckedChange={(value) => rowChecked(row.original.id, !!value)}
         aria-label="Select row"
       />
     ),
