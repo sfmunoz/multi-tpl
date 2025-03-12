@@ -24,6 +24,7 @@ import { columns } from "./columns";
 import { Payment } from "./Payment";
 import TableWrapper from "./TableWrapper";
 import { Bug } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const DataTableDemo = () => {
   const [data, setData] = React.useState<Payment[]>(payments(27));
@@ -43,15 +44,23 @@ const DataTableDemo = () => {
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
-  const rowDelete = (id: string) => {
-    const newData = data.filter((item) => item.id !== id);
-    setData(newData);
+  const pagFix = (newData: Payment[]) => {
     const dlen = newData.length;
     let pi = pagination.pageIndex;
     const ps = pagination.pageSize;
     while (pi > 0 && dlen <= pi * ps) pi--; // general, multi-row deletion supported
     if (pagination.pageIndex === pi) return;
     setPagination({ pageIndex: pi, pageSize: ps });
+  };
+  const rowDelete = (id: string) => {
+    const newData = data.filter((item) => item.id !== id);
+    setData(newData);
+    pagFix(newData);
+  };
+  const delSel = () => {
+    const newData = data.filter((item) => !item.checked);
+    setData(newData);
+    pagFix(newData);
   };
   const rowChecked = (id: string, checked: boolean) =>
     setData((prev) =>
@@ -138,6 +147,15 @@ const DataTableDemo = () => {
           </TableBody>
         </Table>
       </TableWrapper>
+      <div className="flex flex-row justify-center items-center">
+        <Button
+          variant="destructive"
+          onClick={delSel}
+          disabled={!data.reduce((acc, cur) => acc || cur.checked, false)}
+        >
+          Delete Selected
+        </Button>
+      </div>
       <div className="flex flex-row bg-red-200 whitespace-nowrap w-min mx-auto mt-6 p-2 rounded-md border border-red-400">
         <Bug /> [sort] {sortingOld ? JSON.stringify(sortingOld) : "[init]"}
         {" --> "}
