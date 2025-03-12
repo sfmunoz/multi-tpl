@@ -6,10 +6,11 @@ interface RecapProps {
 }
 
 const Recap = ({ table }: RecapProps) => {
+  const rows = table.getCoreRowModel().rows;
+  const sel = rows.filter((row) => row.original.checked).length;
   return (
     <div className="text-sm text-muted-foreground">
-      {table.getFilteredSelectedRowModel().rows.length} of{" "}
-      {table.getFilteredRowModel().rows.length} row(s) selected.
+      {sel} of {rows.length} row(s) selected.
     </div>
   );
 };
